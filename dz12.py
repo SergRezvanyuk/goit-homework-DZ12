@@ -2,6 +2,7 @@ from collections import UserDict
 from datetime import datetime, timedelta
 import re
 import pickle
+import os
 
 
 class Field:
@@ -138,8 +139,9 @@ def write_data():
 
 file_name = 'AddressBook.bin'
 address_book = AddressBook()
-with open(file_name, "rb") as fh:
-    address_book = pickle.load(fh)
+if os.path.exists(file_name):
+    with open(file_name, "rb") as fh:
+        address_book = pickle.load(fh)
     
     
 
